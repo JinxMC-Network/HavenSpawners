@@ -25,23 +25,20 @@ public class BlockBreak implements Listener {
 
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
+        Utils.LogInfo("Spawner Broken");
         if(e.getBlock().getType().equals(Material.SPAWNER)){
             Player player = e.getPlayer();
             for (ItemStack item : player.getInventory().getContents()) {
                 if (item == null) {
-                    return;
+                    continue;
                 }
 
                 if (!item.getType().equals(Material.CONDUIT)) {
-                    return;
+                    continue;
                 }
-
                 ItemMeta meta = item.getItemMeta();
-                if (meta == null) {
-                    return;
-                }
-
                 if (meta.getPersistentDataContainer().has(key, PersistentDataType.DOUBLE)) {
+                    if (e.getPlayer().hasPermission("havenspawners.conduit.mine")) ;
                     player.getInventory().remove(item);
                     return;
                 }
