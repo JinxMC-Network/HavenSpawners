@@ -17,11 +17,14 @@ import java.util.ArrayList;
 public final class HSMain extends JavaPlugin implements Listener {
 
     private NamespacedKey key;
+    public static HSMain plugin;
     Utils Utils = new Utils();
 
     @Override
     public void onEnable() {
         key = new NamespacedKey(this, "gem");
+        plugin = this;
+        saveDefaultConfig();
         registerCommands();
         registerEvents();
     }

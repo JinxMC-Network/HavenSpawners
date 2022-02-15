@@ -3,6 +3,7 @@ package me.Ev1dent.HavenSpawners.Events;
 import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,6 +18,7 @@ public class BlockBreak implements Listener {
     private HSMain HSMain;
     private NamespacedKey key;
     Utils Utils = new Utils();
+    FileConfiguration Config = HSMain.plugin.getConfig();
 
     public BlockBreak(HSMain HSMain, NamespacedKey key){
         this.HSMain = HSMain;
