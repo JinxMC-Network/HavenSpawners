@@ -5,8 +5,8 @@ import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CommandConduit implements TabExecutor {
+public class CommandConduit implements CommandExecutor {
 
     Utils Utils = new Utils();
     private final HSMain HSMain;
@@ -29,61 +29,29 @@ public class CommandConduit implements TabExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.hasPermission("havenspawners.conduit")) {
-            sender.sendMessage(Utils.Color("&4You are not permitted to use that command."));
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+
+        if(!sender.hasPermission("havenspawners.command.conduit")){
+            sender.sendMessage(Utils.Color(Utils.Config().getString("Messages.No-Perms")));
             return true;
-        } else {
-            ItemStack item = HSMain.generateConduit(key);
-            if (!(sender instanceof Player)) {
-                if (args.length > 0 && Bukkit.getPlayer(args[0]) == null) {
-                    Player otherPlayer = Bukkit.getPlayer(args[0]);
-                    HashMap<Integer, ItemStack> hashMap = otherPlayer.getInventory().addItem(item);
-                    if (!hashMap.isEmpty()) {
-                        otherPlayer.getWorld().dropItem(otherPlayer.getLocation(), item);
-                    }
-                } else {
-                    sender.sendMessage(Utils.Color("&4Please specify a player"));
-                }
-                return true;
-            }
+        }
 
-            Player player = (Player) sender;
-            if (args.length == 0 || Bukkit.getPlayer(args[0]) == null) {
+        if (args.length == 0) {
+            sender.sendMessage(Utils.Color(Utils.Config().getString("Message.No-Arguments")));
+            return true;
+        }
 
-                HashMap<Integer, ItemStack> hashMap = player.getInventory().addItem(item);
-                if (!hashMap.isEmpty()) {
-                    player.getWorld().dropItem(player.getLocation(), item);
-                }
-                return true;
-
-            }
-
+        ItemStack conduit = HSMain.generateConduit(key);
+        if (Bukkit.getPlayer(args[0]) == null) {
             Player otherPlayer = Bukkit.getPlayer(args[0]);
-
-            HashMap<Integer, ItemStack> hashMap = otherPlayer.getInventory().addItem(item);
+            HashMap<Integer, ItemStack> hashMap = otherPlayer.getInventory().addItem(conduit);
             if (!hashMap.isEmpty()) {
-
-                otherPlayer.getWorld().dropItem(player.getLocation(), item);
-                Utils.LogInfo(otherPlayer.getName() + " Has been given a conduit.");
-                otherPlayer.sendMessage(Utils.Color("&6You have been given a Spawner Conduit."));
+                otherPlayer.getWorld().dropItem(otherPlayer.getLocation(), conduit);
             }
-
-            return true;
+        } else {
+            sender.sendMessage(Utils.Color(Utils.Config().getString("Messages.Valid-Player")));
         }
+        return true;
     }
 
-    @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (sender.hasPermission("havenspawners.conduit")) this.args.add("give");
-
-        if (args.length == 1) {
-            for (String ar : this.args) {
-                if (ar.toLowerCase().startsWith(args[0].toLowerCase())) result.add(ar);
-            }
-            return result;
-        }
-
-        return null;
-    }
 }

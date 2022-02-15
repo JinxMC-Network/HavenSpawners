@@ -1,2 +1,5 @@
-messages:
-  no-conduit: '&6You need a SpawnerConduit to use that'
+Messages:
+  No-Conduit: '&6You need a SpawnerConduit to use that'
+  No-Perms: '&cYou are not permitted to use that'
+  No-Arguments: '&cPlease specify a player'
+  Valid-Player: '&cPlease specify a valid player'

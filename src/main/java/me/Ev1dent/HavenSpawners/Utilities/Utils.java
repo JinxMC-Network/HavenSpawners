@@ -1,7 +1,9 @@
 package me.Ev1dent.HavenSpawners.Utilities;
 
+import me.Ev1dent.HavenSpawners.HSMain;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public class Utils {
 
@@ -21,6 +23,10 @@ public class Utils {
 
     public void LogSevere(String log){
         Bukkit.getLogger().severe(log);
+    }
+
+    public FileConfiguration Config(){
+        return HSMain.plugin.getConfig();
     }
 }
 
