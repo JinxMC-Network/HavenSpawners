@@ -4,6 +4,7 @@ import me.Ev1dent.HavenSpawners.HSMain;
 import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -30,6 +31,11 @@ public class BlockPlace implements Listener {
                 e.setCancelled(true);
                 p.sendMessage(Utils.Color(Utils.Config().getString("Messages.Place-Conduit")));
             }
+        }
+        if(ItemInHand == Material.SPAWNER){
+            String[] name = item.getItemMeta().getDisplayName().split(" ", 2);
+//            EntityType mob = EntityType.valueOf((String) name[0]);
+            p.sendMessage(name);
         }
     }
 }

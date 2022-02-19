@@ -6,3 +6,4 @@ Messages:
   Received: '&6You received a conduit.'
   Unknown-Arg: '&6Unknown Argument'
   Place-Conduit: '&cYou are not allowed to place that!'
+  Spawner-Received: '&6You have been given a mob spawner!'

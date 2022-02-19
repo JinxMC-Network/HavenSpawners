@@ -3,7 +3,6 @@ package me.Ev1dent.HavenSpawners.Events;
 import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -14,6 +13,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import me.Ev1dent.HavenSpawners.HSMain;
+
+import java.util.HashMap;
 
 public class BlockBreak implements Listener {
 
@@ -29,8 +30,7 @@ public class BlockBreak implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
         if(e.getBlock().getType().equals(Material.SPAWNER)){
-            Block block = e.getBlock();
-            CreatureSpawner spawner = (CreatureSpawner) block.getState();
+            CreatureSpawner spawner = (CreatureSpawner) e.getBlock().getState();
             EntityType entityType = spawner.getSpawnedType();
             Player player = e.getPlayer();
 
@@ -52,8 +52,20 @@ public class BlockBreak implements Listener {
 
                 ItemMeta meta = item.getItemMeta();
                 if (meta.getPersistentDataContainer().has(key, PersistentDataType.DOUBLE)) {
-                    //code to make spawner, and drop it.
+
+                    ItemStack DroppedSpawner = new ItemStack(Material.SPAWNER);
+                    ItemMeta SpawnerMeta = DroppedSpawner.getItemMeta();
+                    SpawnerMeta.setDisplayName(String.valueOf(entityType + " Spawner"));
+                    DroppedSpawner.setItemMeta(SpawnerMeta);
+
                     player.getInventory().remove(item);
+                    e.setExpToDrop(0);
+                    HashMap<Integer, ItemStack> hashMap = player.getInventory().addItem(DroppedSpawner);
+                    player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Spawner-Received")));
+                    if (!hashMap.isEmpty()) {
+                        player.getWorld().dropItem(player.getLocation(), DroppedSpawner);
+                    }
+                    player.getInventory().addItem(DroppedSpawner);
                     return;
                 }
             }
