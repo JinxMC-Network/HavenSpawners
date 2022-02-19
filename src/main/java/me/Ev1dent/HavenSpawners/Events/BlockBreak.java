@@ -34,13 +34,20 @@ public class BlockBreak implements Listener {
             EntityType entityType = spawner.getSpawnedType();
             Player player = e.getPlayer();
 
+            if(Utils.Config().getList("DisabledSpawners").contains(entityType)){
+                player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Disabled")));
+                e.setCancelled(true);
+                return;
+            }
+
             if (!e.getPlayer().hasPermission("havenspawners.conduit.mine")){
                 e.setCancelled(true);
                 player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Cant-Mine")));
                 return;
             }
-            ItemStack i = e.getPlayer().getInventory().getItemInMainHand();
 
+
+            ItemStack i = e.getPlayer().getInventory().getItemInMainHand();
             for (ItemStack item : player.getInventory().getContents()) {
                 if (item == null) {
                     continue;
@@ -54,8 +61,9 @@ public class BlockBreak implements Listener {
                 if (meta.getPersistentDataContainer().has(key, PersistentDataType.DOUBLE)) {
 
                     ItemStack DroppedSpawner = new ItemStack(Material.SPAWNER);
+                    String entity = Utils.Config().getString("Spawner.Name"), ET = entity.replace("{MOB}", String.valueOf(entityType));
                     ItemMeta SpawnerMeta = DroppedSpawner.getItemMeta();
-                    SpawnerMeta.setDisplayName(String.valueOf(entityType + " Spawner"));
+                    SpawnerMeta.setDisplayName(Utils.Color(ET));
                     DroppedSpawner.setItemMeta(SpawnerMeta);
 
                     player.getInventory().remove(item);
@@ -65,7 +73,6 @@ public class BlockBreak implements Listener {
                     if (!hashMap.isEmpty()) {
                         player.getWorld().dropItem(player.getLocation(), DroppedSpawner);
                     }
-                    player.getInventory().addItem(DroppedSpawner);
                     return;
                 }
             }

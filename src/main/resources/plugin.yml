@@ -1,13 +1,27 @@
 name: HavenSpawners
 version: ${project.version}
 main: me.Ev1dent.HavenSpawners.HSMain
+author: Ev1dent
+website: https://github.com/Evidentsinger14
 api-version: 1.13
 description: Forces players to use a token to mine a spawner.
 commands:
-  conduit:
-    description: gives a conduit to a player
-  spawner:
-    description: main command for the plugin, includes a few sub-commands.
+  giveconduit:
+    usage: /<command> <player>
+    description: gives a player a spawner conduit.
+  givespawner:
+    usage: /<command> <player> <type>
+    description: gives a player a spwaner.
+  havenspawners:
+    usage: /<command> <argument>
+    description: main command for plugin.
+    aliases:
+      - hs
+
 permissions:
-  havenspawner.conduit:
-    description: allows access to /conduit
+  havenspawners.command.giveconduit:
+    description: allows access to /giveconduit.
+  havenspawners.command.givespawner:
+    description: allows player to give spawners.
+  havenspawners.havenspawners:
+    description: main plugin command.

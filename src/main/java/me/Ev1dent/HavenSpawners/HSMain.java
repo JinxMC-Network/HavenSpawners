@@ -1,7 +1,9 @@
 package me.Ev1dent.HavenSpawners;
 
-import me.Ev1dent.HavenSpawners.Commands.CommandConduit;
-import me.Ev1dent.HavenSpawners.Commands.CommandSpawner;
+import me.Ev1dent.HavenSpawners.Commands.CommandGiveConduit;
+import me.Ev1dent.HavenSpawners.Commands.CommandGiveSpawner;
+import me.Ev1dent.HavenSpawners.Commands.CommandHavenSpawners;
+import me.Ev1dent.HavenSpawners.Events.AnvilRename;
 import me.Ev1dent.HavenSpawners.Events.BlockPlace;
 import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import me.Ev1dent.HavenSpawners.Events.BlockBreak;
@@ -32,13 +34,15 @@ public final class HSMain extends JavaPlugin implements Listener {
     }
 
     public void registerCommands(){
-        Objects.requireNonNull(this.getCommand("conduit")).setExecutor(new CommandConduit(key, this));
-        Objects.requireNonNull(this.getCommand("spawner")).setExecutor(new CommandSpawner());
+        Objects.requireNonNull(this.getCommand("giveconduit")).setExecutor(new CommandGiveConduit(key, this));
+        Objects.requireNonNull(this.getCommand("givespawner")).setExecutor(new CommandGiveSpawner());
+        Objects.requireNonNull(this.getCommand("havenspawners")).setExecutor(new CommandHavenSpawners());
     }
 
     public void registerEvents(){
         this.getServer().getPluginManager().registerEvents(new BlockBreak(this, key), this);
         this.getServer().getPluginManager().registerEvents(new BlockPlace(key), this);
+        this.getServer().getPluginManager().registerEvents(new AnvilRename(), this);
     }
 
     public ItemStack generateConduit(NamespacedKey key) {

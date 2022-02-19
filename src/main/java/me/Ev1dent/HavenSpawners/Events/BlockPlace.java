@@ -1,11 +1,12 @@
 package me.Ev1dent.HavenSpawners.Events;
 
-import me.Ev1dent.HavenSpawners.HSMain;
 import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
@@ -21,6 +22,7 @@ public class BlockPlace implements Listener {
         this.key = key;
     }
 
+    @EventHandler
     public void onBlockPlace(BlockPlaceEvent e) {
         Player p = e.getPlayer();
         ItemStack item = p.getInventory().getItemInMainHand();
@@ -34,8 +36,16 @@ public class BlockPlace implements Listener {
         }
         if(ItemInHand == Material.SPAWNER){
             String[] name = item.getItemMeta().getDisplayName().split(" ", 2);
-//            EntityType mob = EntityType.valueOf((String) name[0]);
-            p.sendMessage(name);
+            String formatted = name[0].replaceAll("(?i)[§&][0-9A-FK-ORX]", "");
+            CreatureSpawner spawner = (CreatureSpawner) e.getBlockPlaced().getState();
+            try{
+                spawner.setSpawnedType(EntityType.valueOf(formatted));
+            }
+            catch (Exception err){
+                Utils.LogWarn("Unknown Spawner placed. Defaulting to PIG");
+            }
+            spawner.update();
+            p.sendMessage(Utils.Color("&6You have placed a " + name[0] + "&6 Spawner!"));
         }
     }
 }
