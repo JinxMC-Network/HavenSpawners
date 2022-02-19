@@ -3,7 +3,9 @@ package me.Ev1dent.HavenSpawners.Events;
 import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.block.Block;
+import org.bukkit.block.CreatureSpawner;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,9 +18,8 @@ import me.Ev1dent.HavenSpawners.HSMain;
 public class BlockBreak implements Listener {
     
     private HSMain HSMain;
-    private NamespacedKey key;
+    private final NamespacedKey key;
     Utils Utils = new Utils();
-    FileConfiguration Config = HSMain.plugin.getConfig();
 
     public BlockBreak(HSMain HSMain, NamespacedKey key){
         this.HSMain = HSMain;
@@ -27,9 +28,11 @@ public class BlockBreak implements Listener {
 
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
-        Utils.LogInfo("Spawner Broken");
-
         if(e.getBlock().getType().equals(Material.SPAWNER)){
+            Block block = e.getBlock();
+            CreatureSpawner spawner = (CreatureSpawner) block.getState();
+            EntityType entityType = spawner.getSpawnedType();
+
             if (!e.getPlayer().hasPermission("havenspawners.conduit.mine")){
                 e.setCancelled(true);
                 e.getPlayer().sendMessage(Utils.Color("&cYou are not allowed to mine spawners"));
@@ -38,6 +41,7 @@ public class BlockBreak implements Listener {
 
             Player player = e.getPlayer();
             ItemStack i = e.getPlayer().getInventory().getItemInMainHand();
+
             for (ItemStack item : player.getInventory().getContents()) {
                 if (item == null) {
                     continue;
@@ -52,10 +56,10 @@ public class BlockBreak implements Listener {
                     player.getInventory().remove(item);
                     return;
                 }
-                e.setCancelled(true);
-                e.getPlayer().sendMessage(Utils.Color("&6A SpawnerConduit is required to mine spawners."));
-                e.getPlayer().sendMessage(Utils.Color("&6You can get these on /shop"));
             }
+            e.setCancelled(true);
+            e.getPlayer().sendMessage(Utils.Color("&6A SpawnerConduit is required to mine spawners."));
+            e.getPlayer().sendMessage(Utils.Color("&6You can get these on /shop"));
         }
     }
 }

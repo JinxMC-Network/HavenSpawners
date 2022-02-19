@@ -1,5 +1,7 @@
 Messages:
+  No-perms: '&cYou are not permitted to use that command.'
   No-Conduit: '&6You need a SpawnerConduit to use that'
-  No-Perms: '&cYou are not permitted to use that'
-  No-Arguments: '&cPlease specify a player'
-  Valid-Player: '&cPlease specify a valid player'
+  No-Arguments: '&cPlease specify an argument.'
+  Invalid-Player: '&cPlease specify a valid player'
+  Received: '&6You received a conduit.'
+  Unknown-Arg: '&6Unknown Argument'

@@ -1,9 +1,9 @@
 package me.Ev1dent.HavenSpawners;
 
 import me.Ev1dent.HavenSpawners.Commands.CommandConduit;
+import me.Ev1dent.HavenSpawners.Commands.CommandSpawner;
 import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import me.Ev1dent.HavenSpawners.Events.BlockBreak;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
@@ -31,7 +31,9 @@ public final class HSMain extends JavaPlugin implements Listener {
 
     public void registerCommands(){
         this.getCommand("conduit").setExecutor(new CommandConduit(key, this));
+        this.getCommand("spawner").setExecutor(new CommandSpawner());
     }
+
     public void registerEvents(){
         this.getServer().getPluginManager().registerEvents(new BlockBreak(this, key), this);
     }

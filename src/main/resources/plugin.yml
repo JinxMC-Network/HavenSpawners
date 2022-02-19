@@ -6,6 +6,8 @@ description: Forces players to use a token to mine a spawner.
 commands:
   conduit:
     description: gives a conduit to a player
+  spawner:
+    description: main command for the plugin, includes a few sub-commands.
 permissions:
   havenspawner.conduit:
     description: allows access to /conduit
