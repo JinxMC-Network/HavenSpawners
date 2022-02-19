@@ -32,14 +32,13 @@ public class BlockBreak implements Listener {
             Block block = e.getBlock();
             CreatureSpawner spawner = (CreatureSpawner) block.getState();
             EntityType entityType = spawner.getSpawnedType();
+            Player player = e.getPlayer();
 
             if (!e.getPlayer().hasPermission("havenspawners.conduit.mine")){
                 e.setCancelled(true);
-                e.getPlayer().sendMessage(Utils.Color("&cYou are not allowed to mine spawners"));
+                player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Cant-Mine")));
                 return;
             }
-
-            Player player = e.getPlayer();
             ItemStack i = e.getPlayer().getInventory().getItemInMainHand();
 
             for (ItemStack item : player.getInventory().getContents()) {
@@ -58,8 +57,8 @@ public class BlockBreak implements Listener {
                 }
             }
             e.setCancelled(true);
-            e.getPlayer().sendMessage(Utils.Color("&6A SpawnerConduit is required to mine spawners."));
-            e.getPlayer().sendMessage(Utils.Color("&6You can get these on /shop"));
+            player.sendMessage(Utils.Color(Utils.Config().getString("Messages.No-Conduit1")));
+            player.sendMessage(Utils.Color(Utils.Config().getString("Messages.No-Conduit2")));
         }
     }
 }

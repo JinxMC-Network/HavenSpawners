@@ -39,14 +39,13 @@ public class CommandConduit implements CommandExecutor {
         switch (args[0].toLowerCase()){
             case "give":
                 if(args.length < 2){
-                    sender.sendMessage("Please specify a player");
+                    sender.sendMessage(Utils.Color(Utils.Config().getString("Messages.Invalid-Player")));
                     return true;
                 }
-                ItemStack conduit = HSMain.generateConduit(key);
 
-                //
+                ItemStack conduit = HSMain.generateConduit(key);
                 if (Bukkit.getPlayer(args[1]) == null) {
-                    sender.sendMessage(Utils.Color(Utils.Config().getString("Messages.Null-Player")));
+                    sender.sendMessage(Utils.Color(Utils.Config().getString("Messages.Invalid-Player")));
                     return true;
                 } else {
                     Player otherPlayer = Bukkit.getPlayer(args[1]);
