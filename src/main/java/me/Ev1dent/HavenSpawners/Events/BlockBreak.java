@@ -16,7 +16,7 @@ import org.bukkit.persistence.PersistentDataType;
 import me.Ev1dent.HavenSpawners.HSMain;
 
 public class BlockBreak implements Listener {
-    
+
     private HSMain HSMain;
     private final NamespacedKey key;
     Utils Utils = new Utils();
@@ -52,6 +52,7 @@ public class BlockBreak implements Listener {
 
                 ItemMeta meta = item.getItemMeta();
                 if (meta.getPersistentDataContainer().has(key, PersistentDataType.DOUBLE)) {
+                    //code to make spawner, and drop it.
                     player.getInventory().remove(item);
                     return;
                 }
