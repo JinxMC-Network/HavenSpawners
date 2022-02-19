@@ -2,6 +2,7 @@ package me.Ev1dent.HavenSpawners;
 
 import me.Ev1dent.HavenSpawners.Commands.CommandConduit;
 import me.Ev1dent.HavenSpawners.Commands.CommandSpawner;
+import me.Ev1dent.HavenSpawners.Events.BlockPlace;
 import me.Ev1dent.HavenSpawners.Utilities.Utils;
 import me.Ev1dent.HavenSpawners.Events.BlockBreak;
 import org.bukkit.Material;
@@ -13,6 +14,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public final class HSMain extends JavaPlugin implements Listener {
 
@@ -22,7 +24,7 @@ public final class HSMain extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        key = new NamespacedKey(this, "gem");
+        key = new NamespacedKey(this, "conduit");
         plugin = this;
         saveDefaultConfig();
         registerCommands();
@@ -30,12 +32,13 @@ public final class HSMain extends JavaPlugin implements Listener {
     }
 
     public void registerCommands(){
-        this.getCommand("conduit").setExecutor(new CommandConduit(key, this));
-        this.getCommand("spawner").setExecutor(new CommandSpawner());
+        Objects.requireNonNull(this.getCommand("conduit")).setExecutor(new CommandConduit(key, this));
+        Objects.requireNonNull(this.getCommand("spawner")).setExecutor(new CommandSpawner());
     }
 
     public void registerEvents(){
         this.getServer().getPluginManager().registerEvents(new BlockBreak(this, key), this);
+        this.getServer().getPluginManager().registerEvents(new BlockPlace(key), this);
     }
 
     public ItemStack generateConduit(NamespacedKey key) {
