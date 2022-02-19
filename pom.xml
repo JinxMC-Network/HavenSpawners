@@ -6,7 +6,7 @@
 
     <groupId>me.Ev1dent</groupId>
     <artifactId>HavenSpawners</artifactId>
-    <version>1.0.0-Development</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>HavenSpawners</name>

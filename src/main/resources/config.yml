@@ -1,6 +1,18 @@
 Spawner:
   Name: '&6{MOB} &eSpawner'
 
+# Can be given with /givespawner
+
+# NOTE: ALL VALUES BELOW HERE, MUST BE IN CAPITAL LETTERS, WITH UNDERSCORES BETWEEN WORDS.
+Mobs:
+  - SHEEP
+  - COW
+
+# Cannot be mined
+DisabledSpawners:
+  - BLAZE
+  - WITHER
+
 Messages:
   No-perms: '&cYou are not permitted to use that command.'
   No-Conduit: '&6You need a SpawnerConduit to use that'
@@ -16,17 +28,3 @@ Messages:
   Cannot-Rename: '&cYou are not allowed to rename spawners in an anvil!'
   Usage: '/<command> give <player> <MOB>'
   Disabled: '&cYou are not allowed to mine that spawner!'
-
-
-
-# Can be given with /givespawner
-
-# NOTE: ALL VALUES BELOW HERE, MUST BE IN THE CORRECT FORMAT.
-Mobs:
-  - SHEEP
-  - COW
-
-# Cannot be mined
-DisabledSpawners:
-  - BLAZE
-  - WITHER

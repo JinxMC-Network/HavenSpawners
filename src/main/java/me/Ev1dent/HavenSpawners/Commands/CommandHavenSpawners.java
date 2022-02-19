@@ -35,8 +35,7 @@ public class CommandHavenSpawners implements CommandExecutor {
             default:
                 sender.sendMessage("/<command> [reload/version]");
                 break;
-
         }
-        return false;
+        return true;
     }
 }

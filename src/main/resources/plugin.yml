@@ -5,6 +5,7 @@ author: Ev1dent
 website: https://github.com/Evidentsinger14
 api-version: 1.13
 description: Forces players to use a token to mine a spawner.
+
 commands:
   giveconduit:
     usage: /<command> <player>

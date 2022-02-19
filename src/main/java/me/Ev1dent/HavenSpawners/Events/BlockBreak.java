@@ -34,7 +34,7 @@ public class BlockBreak implements Listener {
             EntityType entityType = spawner.getSpawnedType();
             Player player = e.getPlayer();
 
-            if(Utils.Config().getList("DisabledSpawners").contains(entityType)){
+            if(Utils.Config().getList("DisabledSpawners").contains(entityType.toString())){
                 player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Disabled")));
                 e.setCancelled(true);
                 return;
