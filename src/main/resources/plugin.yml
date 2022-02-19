@@ -26,3 +26,6 @@ permissions:
     description: allows player to give spawners.
   havenspawners.havenspawners:
     description: main plugin command.
+  havenspawners.spawners.mine:
+    description: Permission to allow players to mine spawners.
+    default: true

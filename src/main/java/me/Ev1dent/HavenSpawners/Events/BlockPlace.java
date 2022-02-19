@@ -27,6 +27,7 @@ public class BlockPlace implements Listener {
         Player p = e.getPlayer();
         ItemStack item = p.getInventory().getItemInMainHand();
         Material ItemInHand = item.getType();
+
         if (ItemInHand == Material.CONDUIT) {
             ItemMeta meta = item.getItemMeta();
             if (meta.getPersistentDataContainer().has(key, PersistentDataType.DOUBLE)) {
@@ -34,6 +35,7 @@ public class BlockPlace implements Listener {
                 p.sendMessage(Utils.Color(Utils.Config().getString("Messages.Place-Conduit")));
             }
         }
+
         if(ItemInHand == Material.SPAWNER){
             String[] name = item.getItemMeta().getDisplayName().split(" ", 2);
             String formatted = name[0].replaceAll("(?i)[§&][0-9A-FK-ORX]", "");

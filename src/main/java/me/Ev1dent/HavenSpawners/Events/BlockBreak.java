@@ -40,7 +40,7 @@ public class BlockBreak implements Listener {
                 return;
             }
 
-            if (!e.getPlayer().hasPermission("havenspawners.conduit.mine")){
+            if (!e.getPlayer().hasPermission("havenspawners.spawners.mine")){
                 e.setCancelled(true);
                 player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Cant-Mine")));
                 return;
