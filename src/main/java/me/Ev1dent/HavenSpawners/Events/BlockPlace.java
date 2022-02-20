@@ -37,6 +37,10 @@ public class BlockPlace implements Listener {
         }
 
         if(ItemInHand == Material.SPAWNER){
+            if(e.isCancelled()){
+                return;
+            }
+
             String[] name = item.getItemMeta().getDisplayName().split(" ", 2);
             String formatted = name[0].replaceAll("(?i)[§&][0-9A-FK-ORX]", "");
             CreatureSpawner spawner = (CreatureSpawner) e.getBlockPlaced().getState();

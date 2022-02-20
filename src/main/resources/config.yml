@@ -14,7 +14,7 @@ DisabledSpawners:
   - WITHER
 
 Messages:
-  No-perms: '&cYou are not permitted to use that command.'
+  No-Perms: '&cYou are not permitted to use that command.'
   No-Conduit: '&6You need a SpawnerConduit to use that'
   No-Arguments: '&cPlease specify an argument.'
   Invalid-Player: '&cPlease specify a valid player'

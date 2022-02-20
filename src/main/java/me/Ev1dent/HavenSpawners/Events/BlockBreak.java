@@ -46,6 +46,9 @@ public class BlockBreak implements Listener {
                 return;
             }
 
+            if(e.isCancelled()){
+                return;
+            }
 
             ItemStack i = e.getPlayer().getInventory().getItemInMainHand();
             for (ItemStack item : player.getInventory().getContents()) {
