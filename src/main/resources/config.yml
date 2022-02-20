@@ -26,5 +26,6 @@ Messages:
   No-Conduit1: '&6You need a SpawnerConduit to mine that!'
   No-Conduit2: '&6You can buy them on /shop'
   Cannot-Rename: '&cYou are not allowed to rename spawners in an anvil!'
+  Cant-Mine: '&cYou are not permitted to mine that.'
   Usage: '/<command> give <player> <MOB>'
   Disabled: '&cYou are not allowed to mine that spawner!'
