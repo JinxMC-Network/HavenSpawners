@@ -29,7 +29,7 @@ public class CommandHavenSpawners implements CommandExecutor {
                 break;
 
             case "version":
-                sender.sendMessage("1.0.0 (Stable)");
+                sender.sendMessage("1.0.1 (Stable)");
                 break;
 
             default:
