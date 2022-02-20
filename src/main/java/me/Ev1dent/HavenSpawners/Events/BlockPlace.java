@@ -13,6 +13,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.Locale;
+
 public class BlockPlace implements Listener {
 
     private final NamespacedKey key;
@@ -45,7 +47,7 @@ public class BlockPlace implements Listener {
             String formatted = name[0].replaceAll("(?i)[§&][0-9A-FK-ORX]", "");
             CreatureSpawner spawner = (CreatureSpawner) e.getBlockPlaced().getState();
             try{
-                spawner.setSpawnedType(EntityType.valueOf(formatted));
+                spawner.setSpawnedType(EntityType.valueOf(formatted.toUpperCase()));
             }
             catch (Exception err){
                 Utils.LogWarn("Unknown Spawner placed. Defaulting to PIG");
