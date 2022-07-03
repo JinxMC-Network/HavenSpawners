@@ -24,6 +24,21 @@ public class AnvilRename implements Listener {
 
         Player player = (Player) e.getWhoClicked();
         e.setCancelled(true);
-        player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Cannot-Rename")));
+        player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Cannot-Rename-Spawner")));
+    }
+
+    @EventHandler
+    public void onRenameConduit(InventoryClickEvent e){
+        if (e.getCurrentItem() == null) {
+            return;
+        }
+
+        if (e.getInventory().getType() != InventoryType.ANVIL || e.getCurrentItem().getType() != Material.CONDUIT) {
+            return;
+        }
+
+        Player player = (Player) e.getWhoClicked();
+        e.setCancelled(true);
+        player.sendMessage(Utils.Color(Utils.Config().getString("Messages.Cannot-Rename-Conduit")));
     }
 }
