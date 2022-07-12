@@ -1,6 +1,7 @@
-package me.Ev1dent.HavenSpawners.Events;
+package dev.Ev1dent.HavenSpawners.Events;
 
-import me.Ev1dent.HavenSpawners.Utilities.Utils;
+import dev.Ev1dent.HavenSpawners.Utilities.Utils;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.CreatureSpawner;
@@ -12,7 +13,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import me.Ev1dent.HavenSpawners.HSMain;
+import dev.Ev1dent.HavenSpawners.HSMain;
 
 import java.util.HashMap;
 
@@ -29,6 +30,7 @@ public class BlockBreak implements Listener {
 
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
+        if(e.getPlayer().getGameMode().equals(GameMode.CREATIVE) && e.getPlayer().isSneaking()) return;
         if(e.getBlock().getType().equals(Material.SPAWNER)){
             CreatureSpawner spawner = (CreatureSpawner) e.getBlock().getState();
             EntityType entityType = spawner.getSpawnedType();

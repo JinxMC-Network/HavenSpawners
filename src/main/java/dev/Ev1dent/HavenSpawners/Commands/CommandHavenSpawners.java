@@ -1,10 +1,10 @@
-package me.Ev1dent.HavenSpawners.Commands;
+package dev.Ev1dent.HavenSpawners.Commands;
 
-import me.Ev1dent.HavenSpawners.HSMain;
+import dev.Ev1dent.HavenSpawners.HSMain;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import me.Ev1dent.HavenSpawners.Utilities.Utils;
+import dev.Ev1dent.HavenSpawners.Utilities.Utils;
 
 public class CommandHavenSpawners implements CommandExecutor {
 

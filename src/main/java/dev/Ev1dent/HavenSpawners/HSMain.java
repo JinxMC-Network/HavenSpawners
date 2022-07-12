@@ -1,12 +1,13 @@
-package me.Ev1dent.HavenSpawners;
+package dev.Ev1dent.HavenSpawners;
 
-import me.Ev1dent.HavenSpawners.Commands.CommandGiveConduit;
-import me.Ev1dent.HavenSpawners.Commands.CommandGiveSpawner;
-import me.Ev1dent.HavenSpawners.Commands.CommandHavenSpawners;
-import me.Ev1dent.HavenSpawners.Events.AnvilRename;
-import me.Ev1dent.HavenSpawners.Events.BlockPlace;
-import me.Ev1dent.HavenSpawners.Utilities.Utils;
-import me.Ev1dent.HavenSpawners.Events.BlockBreak;
+import dev.Ev1dent.HavenSpawners.Commands.CommandGiveConduit;
+import dev.Ev1dent.HavenSpawners.Commands.CommandGiveSpawner;
+import dev.Ev1dent.HavenSpawners.Commands.CommandHavenSpawners;
+import dev.Ev1dent.HavenSpawners.Events.AnvilRename;
+import dev.Ev1dent.HavenSpawners.Events.BlockPlace;
+import dev.Ev1dent.HavenSpawners.Events.NoSpawnEggs;
+import dev.Ev1dent.HavenSpawners.Utilities.Utils;
+import dev.Ev1dent.HavenSpawners.Events.BlockBreak;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
@@ -16,8 +17,6 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
 public final class HSMain extends JavaPlugin implements Listener {
 
     private NamespacedKey key;
@@ -34,15 +33,16 @@ public final class HSMain extends JavaPlugin implements Listener {
     }
 
     public void registerCommands(){
-        Objects.requireNonNull(this.getCommand("giveconduit")).setExecutor(new CommandGiveConduit(key, this));
-        Objects.requireNonNull(this.getCommand("givespawner")).setExecutor(new CommandGiveSpawner());
-        Objects.requireNonNull(this.getCommand("havenspawners")).setExecutor(new CommandHavenSpawners());
+        this.getCommand("giveconduit").setExecutor(new CommandGiveConduit(key, this));
+        this.getCommand("givespawner").setExecutor(new CommandGiveSpawner());
+        this.getCommand("havenspawners").setExecutor(new CommandHavenSpawners());
     }
 
     public void registerEvents(){
         this.getServer().getPluginManager().registerEvents(new BlockBreak(this, key), this);
         this.getServer().getPluginManager().registerEvents(new BlockPlace(key), this);
         this.getServer().getPluginManager().registerEvents(new AnvilRename(), this);
+        this.getServer().getPluginManager().registerEvents(new NoSpawnEggs(), this);
     }
 
     public ItemStack generateConduit(NamespacedKey key) {

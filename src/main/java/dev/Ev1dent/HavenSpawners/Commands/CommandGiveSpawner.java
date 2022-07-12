@@ -1,11 +1,11 @@
-package me.Ev1dent.HavenSpawners.Commands;
+package dev.Ev1dent.HavenSpawners.Commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import me.Ev1dent.HavenSpawners.Utilities.Utils;
+import dev.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

@@ -1,6 +1,6 @@
-package me.Ev1dent.HavenSpawners.Events;
+package dev.Ev1dent.HavenSpawners.Events;
 
-import me.Ev1dent.HavenSpawners.Utilities.Utils;
+import dev.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.CreatureSpawner;
@@ -12,8 +12,6 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-
-import java.util.Locale;
 
 public class BlockPlace implements Listener {
 

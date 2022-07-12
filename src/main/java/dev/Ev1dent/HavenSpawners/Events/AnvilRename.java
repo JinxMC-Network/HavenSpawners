@@ -1,4 +1,4 @@
-package me.Ev1dent.HavenSpawners.Events;
+package dev.Ev1dent.HavenSpawners.Events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
-import me.Ev1dent.HavenSpawners.Utilities.Utils;
+import dev.Ev1dent.HavenSpawners.Utilities.Utils;
 
 public class AnvilRename implements Listener {
 
