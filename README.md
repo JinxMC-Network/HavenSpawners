@@ -14,4 +14,4 @@ Haven-MC Spawner Conduit Plugin
 
 # Misc Permissions:
 * havenspawners.spawners.mine
-  * (given by default)
+    * (given by default)

@@ -1,9 +1,10 @@
 name: HavenSpawners
 version: ${project.version}
-main: me.Ev1dent.HavenSpawners.HSMain
+main: dev.Ev1dent.HavenSpawners.HSMain
+prefix: HS
 author: Ev1dent
 website: https://github.com/Evidentsinger14
-api-version: 1.13
+api-version: 1.18
 description: Forces players to use a token to mine a spawner.
 
 commands:

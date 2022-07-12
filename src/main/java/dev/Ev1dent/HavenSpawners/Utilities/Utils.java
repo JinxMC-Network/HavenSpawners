@@ -1,6 +1,6 @@
-package me.Ev1dent.HavenSpawners.Utilities;
+package dev.Ev1dent.HavenSpawners.Utilities;
 
-import me.Ev1dent.HavenSpawners.HSMain;
+import dev.Ev1dent.HavenSpawners.HSMain;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;

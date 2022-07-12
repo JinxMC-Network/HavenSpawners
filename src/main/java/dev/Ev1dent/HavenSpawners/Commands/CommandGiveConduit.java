@@ -1,7 +1,7 @@
-package me.Ev1dent.HavenSpawners.Commands;
+package dev.Ev1dent.HavenSpawners.Commands;
 
-import me.Ev1dent.HavenSpawners.HSMain;
-import me.Ev1dent.HavenSpawners.Utilities.Utils;
+import dev.Ev1dent.HavenSpawners.HSMain;
+import dev.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
