@@ -6,6 +6,7 @@ import dev.Ev1dent.HavenSpawners.Commands.CommandHavenSpawners;
 import dev.Ev1dent.HavenSpawners.Events.AnvilRename;
 import dev.Ev1dent.HavenSpawners.Events.BlockPlace;
 import dev.Ev1dent.HavenSpawners.Events.NoSpawnEggs;
+import dev.Ev1dent.HavenSpawners.Utilities.TabCompleter;
 import dev.Ev1dent.HavenSpawners.Utilities.Utils;
 import dev.Ev1dent.HavenSpawners.Events.BlockBreak;
 import org.bukkit.Material;
@@ -29,6 +30,7 @@ public final class HSMain extends JavaPlugin implements Listener {
         plugin = this;
         saveDefaultConfig();
         registerCommands();
+        addTabCompletion();
         registerEvents();
     }
 
@@ -43,6 +45,11 @@ public final class HSMain extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(new BlockPlace(key), this);
         this.getServer().getPluginManager().registerEvents(new AnvilRename(), this);
         this.getServer().getPluginManager().registerEvents(new NoSpawnEggs(), this);
+    }
+
+    public void addTabCompletion(){
+        this.getCommand("givespawner").setTabCompleter(new TabCompleter());
+        this.getCommand("havenspawners").setTabCompleter(new TabCompleter());
     }
 
     public ItemStack generateConduit(NamespacedKey key) {
