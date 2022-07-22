@@ -18,20 +18,20 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
         final List<String> completions = new ArrayList<>();
 
         switch (command.getName().toLowerCase()) {
-            case "givespawner" -> {
+            case "givespawner": {
                 switch (args.length) {
-                    case 1 -> {
+                    case 1 : {
                         return null;
                     }
-                    case 2 -> {
+                    case 2 : {
                         StringUtil.copyPartialMatches(args[1], HSMain.plugin.getConfig().getStringList("Mobs"), completions);
                         Collections.sort(completions);
                         return completions;
                     }
                 }
             }
-            case "havenspawners" -> {
 
+            case "havenspawners" :{
                 StringUtil.copyPartialMatches(args[0], Arrays.asList(hsArguments), completions);
                 Collections.sort(completions);
                 return completions;
