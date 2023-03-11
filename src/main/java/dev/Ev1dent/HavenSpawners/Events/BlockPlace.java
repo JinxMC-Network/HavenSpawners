@@ -15,12 +15,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class BlockPlace implements Listener {
 
-    private final NamespacedKey key;
     Utils Utils = new Utils();
-
-    public BlockPlace(NamespacedKey key){
-        this.key = key;
-    }
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent e) {
@@ -28,15 +23,7 @@ public class BlockPlace implements Listener {
         ItemStack item = p.getInventory().getItemInMainHand();
         Material ItemInHand = item.getType();
 
-        if (ItemInHand == Material.CONDUIT) {
-            ItemMeta meta = item.getItemMeta();
-            if (meta.getPersistentDataContainer().has(key, PersistentDataType.DOUBLE)) {
-                e.setCancelled(true);
-                p.sendMessage(Utils.Color(Utils.Config().getString("Messages.Place-Conduit")));
-            }
-        }
-
-        if(ItemInHand == Material.SPAWNER){
+        if(ItemInHand == Material.BEDROCK){
             if(e.isCancelled()){
                 return;
             }
