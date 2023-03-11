@@ -15,7 +15,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import dev.Ev1dent.HavenSpawners.HSMain;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
@@ -38,7 +37,7 @@ public class BlockBreak implements Listener {
             }
 
             ItemStack i = e.getPlayer().getInventory().getItemInMainHand();
-            if(i != (ItemStack) MaterialSetTag.MINEABLE_PICKAXE){
+            if(MaterialTags.PICKAXES.isTagged(i)){
                 e.setDropItems(false);
             }
 
