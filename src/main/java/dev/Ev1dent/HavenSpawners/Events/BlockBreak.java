@@ -1,6 +1,5 @@
 package dev.Ev1dent.HavenSpawners.Events;
 
-import com.destroystokyo.paper.MaterialSetTag;
 import com.destroystokyo.paper.MaterialTags;
 import dev.Ev1dent.HavenSpawners.Utilities.Utils;
 import org.bukkit.GameMode;
